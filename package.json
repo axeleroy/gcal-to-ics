@@ -4,7 +4,8 @@
     "description": "A Firefox extension that intercepts links that create new Google Calendar events and turns them into iCalendar files",
     "scripts": {
         "test": "vitest",
-        "dev": "cd src && concurrently 'tsc --watch' 'web-ext run'"
+        "dev": "cd src && concurrently 'tsc --watch' 'web-ext run'",
+        "build": "tsc"
     },
     "packageManager": "pnpm@10.24.0",
     "devDependencies": {
