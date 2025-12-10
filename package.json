@@ -1,0 +1,33 @@
+{
+    "name": "gcal-to-ics",
+    "version": "1.0.0",
+    "description": "A Firefox extension that intercepts links that create new Google Calendar events and turns them into iCalendar files",
+    "scripts": {
+        "test": "vitest",
+        "dev": "cd src && concurrently 'tsc --watch' 'web-ext run'"
+    },
+    "packageManager": "pnpm@10.24.0",
+    "devDependencies": {
+        "@eslint/js": "^9.39.1",
+        "@types/firefox-webext-browser": "^143.0.0",
+        "@types/node": "^24.10.2",
+        "concurrently": "^9.2.1",
+        "eslint": "^9.39.1",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.4",
+        "globals": "^16.5.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.2.7",
+        "prettier": "^3.7.4",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.49.0",
+        "vitest": "^4.0.15",
+        "web-ext": "^9.2.0"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
+    },
+    "dependencies": {
+        "ical-generator": "^10.0.0"
+    }
+}

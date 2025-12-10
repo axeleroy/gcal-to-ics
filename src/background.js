@@ -1,5 +1,3 @@
-const targetUrl =
-    "https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_second_WebExtension/frog.jpg";
 const urls = ["https://calendar.google.com/calendar/render*", "https://calendar.google.com/calendar/r/eventedit*"];
 
 function redirect(requestDetails) {
@@ -14,14 +12,8 @@ function redirect(requestDetails) {
         return;
     }
     return {
-        redirectUrl: `data:text/calendar,${encodeURI(iCalendarResponse.result)}`
-    }
-    /*if (requestDetails.url === targetUrl) {
-        return;
-    }
-    return {
-        redirectUrl: targetUrl,
-    };*/
+        redirectUrl: `data:text/calendar,${encodeURI(iCalendarResponse.result)}`,
+    };
 }
 
 /**
@@ -32,11 +24,11 @@ function extractSearchParams(pageUrl) {
     try {
         // I'd prefer to use URL.parse(), but it is still not supported in Firefox ESR2 (115)
         const url = new URL(pageUrl);
-        const {searchParams} = url;
-        return {ok: true, result: searchParams};
+        const { searchParams } = url;
+        return { ok: true, result: searchParams };
     } catch (e) {
         console.error("Failed to extract search params", e);
-        return {ok: false};
+        return { ok: false };
     }
 }
 
@@ -47,11 +39,11 @@ function extractSearchParams(pageUrl) {
 function buildICalendar(searchParams) {
     const dates = getDates(searchParams);
     if (!dates.ok) {
-        return {ok: false}
+        return { ok: false };
     }
     return {
-        ok: true, result:
-            `BEGIN:VCALENDAR
+        ok: true,
+        result: `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//ZContent.net//Zap Calendar 1.0//EN
 CALSCALE:GREGORIAN
@@ -65,8 +57,8 @@ DTEND:${dates.result.end}
 DESCRIPTION:${safeGetSearchParam(searchParams, "details")}
 LOCATION:${safeGetSearchParam(searchParams, "location")}
 END:VEVENT
-END:VCALENDAR`
-    }
+END:VCALENDAR`,
+    };
 }
 
 /**
@@ -75,10 +67,10 @@ END:VCALENDAR`
  */
 function safeGetSearchParam(searchParams, key) {
     if (searchParams.has(key)) {
-        return searchParams.get(key)
+        return searchParams.get(key);
     } else {
-        console.warn(`Search params do not contain "${key}" entry`, searchParams)
-        return ""
+        console.warn(`Search params do not contain "${key}" entry`, searchParams);
+        return "";
     }
 }
 
@@ -88,15 +80,11 @@ function safeGetSearchParam(searchParams, key) {
  */
 function getDates(searchParams) {
     if (!searchParams.has("dates")) {
-        console.error("Search params do not contain \"dates\" entry", searchParams);
-        return {ok: false};
+        console.error('Search params do not contain "dates" entry', searchParams);
+        return { ok: false };
     }
     const [start, end] = searchParams.get("dates").split("/");
-    return {ok: true, result: {start, end}}
+    return { ok: true, result: { start, end } };
 }
 
-browser.webRequest.onBeforeRequest.addListener(
-    redirect,
-    {urls, types: ["main_frame"]},
-    ["blocking"],
-);
+browser.webRequest.onBeforeRequest.addListener(redirect, { urls, types: ["main_frame"] }, ["blocking"]);

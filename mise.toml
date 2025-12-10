@@ -1,0 +1,15 @@
+[tools]
+node = "24.11.1"
+
+[env]
+_.path = ['./node_modules/.bin']
+
+[hooks]
+enter = "mise i -q"
+postinstall = 'npx corepack enable pnpm'
+
+[tasks.pnpm-install]
+description = 'Installs dependencies with pnpm'
+run = 'pnpm install --frozen-lockfile'
+sources = ['package.json', 'pnpm-lock.yaml', 'mise.toml']
+outputs = ['node_modules/.pnpm/lock.yaml']
