@@ -9,23 +9,6 @@ export function safeGetSearchParam(searchParams: URLSearchParams, key: string): 
   }
 }
 
-type Dates = { start: string, end: string}
-
-export function getDates(searchParams: URLSearchParams): Result<Dates> {
-  if (!searchParams.has("dates")) {
-    console.error('Search params do not contain "dates" entry', searchParams);
-    return failure();
-  }
-
-  const dates = searchParams.get("dates")!;
-  const [start, end] = dates.split("/");
-  if (!start || !end) {
-    console.error(`One of the dates are missing from dates search param: ${dates}`)
-    return failure()
-  }
-  return success({ start, end });
-}
-
 export function extractSearchParams(pageUrl: string): Result<URLSearchParams> {
   try {
     // I'd prefer to use URL.parse(), but it is still not supported in Firefox ESR2 (115)
