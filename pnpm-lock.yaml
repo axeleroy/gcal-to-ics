@@ -8,9 +8,12 @@ importers:
 
   .:
     dependencies:
+      dayjs:
+        specifier: ^1.11.19
+        version: 1.11.19
       ical-generator:
         specifier: ^10.0.0
-        version: 10.0.0(@types/node@24.10.2)
+        version: 10.0.0(@types/node@24.10.2)(dayjs@1.11.19)
       ts-pattern:
         specifier: ^5.9.0
         version: 5.9.0
@@ -868,6 +871,9 @@ packages:
   data-urls@6.0.0:
     resolution: {integrity: sha512-BnBS08aLUM+DKamupXs3w2tJJoqU+AkaE/+6vQxi/G/DPmIZFJJp9Dkb1kM03AZx8ADehDUZgsNxju3mPXZYIA==}
     engines: {node: '>=20'}
+
+  dayjs@1.11.19:
+    resolution: {integrity: sha512-t5EcLVS6QPBNqM2z8fakk/NKel+Xzshgt8FFKAn+qwlD1pzZWxh0nVCrvFK7ZDb6XucZeF9z8C7CBWTRIVApAw==}
 
   debounce@1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
@@ -2955,6 +2961,8 @@ snapshots:
       whatwg-mimetype: 4.0.0
       whatwg-url: 15.1.0
 
+  dayjs@1.11.19: {}
+
   debounce@1.2.1: {}
 
   debug@4.3.7:
@@ -3327,9 +3335,10 @@ snapshots:
 
   husky@9.1.7: {}
 
-  ical-generator@10.0.0(@types/node@24.10.2):
+  ical-generator@10.0.0(@types/node@24.10.2)(dayjs@1.11.19):
     optionalDependencies:
       '@types/node': 24.10.2
+      dayjs: 1.11.19
 
   iconv-lite@0.6.3:
     dependencies:
