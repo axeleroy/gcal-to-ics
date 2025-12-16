@@ -7,7 +7,8 @@
 
         // Environment Settings
         // See also https://aka.ms/tsconfig/module
-        "module": "nodenext",
+        "module": "preserve",
+        "moduleResolution": "bundler",
         "target": "esnext",
         "types": ["firefox-webext-browser"],
         // For nodejs:
@@ -16,9 +17,9 @@
         // and npm install -D @types/node
 
         // Other Outputs
-        "sourceMap": true,
-        "declaration": true,
-        "declarationMap": true,
+        // "sourceMap": true,
+        // "declaration": true,
+        // "declarationMap": true,
 
         // Stricter Typechecking Options
         "noUncheckedIndexedAccess": true,
