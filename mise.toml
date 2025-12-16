@@ -13,3 +13,23 @@ description = 'Installs dependencies with pnpm'
 run = 'pnpm install --frozen-lockfile'
 sources = ['package.json', 'pnpm-lock.yaml', 'mise.toml']
 outputs = ['node_modules/.pnpm/lock.yaml']
+
+[tasks.lint]
+run = 'pnpm lint'
+depends = ['pnpm-install']
+
+[tasks.test]
+run = 'pnpm test'
+depends = ['pnpm-install']
+
+[tasks.bundle]
+run = 'pnpm bundle'
+depends = ['pnpm-install']
+
+[tasks.build]
+run = 'pnpm build'
+depends = ['bundle']
+
+[tasks.web-ext-lint]
+run = 'pnpm web-ext-lint'
+depends = ['bundle']
