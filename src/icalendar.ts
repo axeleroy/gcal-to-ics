@@ -1,6 +1,12 @@
 import { failure, Result, success } from "./types";
 import { safeGetSearchParam } from "./utils";
-import ical, { ICalAttendeeData, ICalEventBusyStatus, ICalEventData, ICalEventTransparency } from "ical-generator";
+import ical, {
+  ICalAttendeeData,
+  ICalCalendarMethod,
+  ICalEventBusyStatus,
+  ICalEventData,
+  ICalEventTransparency
+} from "ical-generator";
 import { match } from "ts-pattern";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
@@ -30,7 +36,10 @@ export function buildICalendar(searchParams: URLSearchParams): Result<string> {
     attendees: getAttendees(searchParams),
     repeating: searchParams.get("recur")
   };
-  return success(ical().createEvent(event).toString());
+  const cal = ical()
+  cal.method(ICalCalendarMethod.REQUEST);
+  cal.createEvent(event);
+  return success(cal.toString());
 }
 
 const allDayFormat = "YYYYMMDD";

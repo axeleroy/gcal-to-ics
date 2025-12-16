@@ -27,7 +27,11 @@ describe("buildIcalendar", () => {
 
     // THEN
     expect(result.ok).toBe(true);
-    expect(result.ok && result.result).toBe(`BEGIN:VEVENT\r
+    expect(result.ok && result.result).toBe(`BEGIN:VCALENDAR\r
+VERSION:2.0\r
+PRODID:-//sebbo.net//ical-generator//EN\r
+METHOD:REQUEST\r
+BEGIN:VEVENT\r
 UID:foo\r
 SEQUENCE:0\r
 DTSTAMP:20251215T000000Z\r
@@ -37,7 +41,7 @@ SUMMARY:Birthday\r
 LOCATION:North Pole\r
 DESCRIPTION:With clowns and stuff\r
 END:VEVENT\r
-`)
+END:VCALENDAR`)
   });
   // TODO: test all other cases
 })
