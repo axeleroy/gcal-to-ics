@@ -1,13 +1,6 @@
 .idea
 node_modules
 
-*.mjs
-*.mjs.map
-*.d.ts
-*.d.ts.map
-*.d.mts
-*.d.mts.map
-*.js.map
 src/*.js
 
 *.log
