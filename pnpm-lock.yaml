@@ -14,6 +14,9 @@ importers:
       ical-generator:
         specifier: ^10.0.0
         version: 10.0.0(@types/node@24.10.2)(dayjs@1.11.19)
+      timezones-ical-library:
+        specifier: ^1.10.0
+        version: 1.10.0
       ts-pattern:
         specifier: ^5.9.0
         version: 5.9.0
@@ -1999,6 +2002,10 @@ packages:
 
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
+
+  timezones-ical-library@1.10.0:
+    resolution: {integrity: sha512-aSwylC0FyyxMqMjkuaYz56HBhhooYabGT74CbTuY1uOeIcBXSQTXf+u/mTR0MWJFPQDe21REjex+4wt0OdFDpA==}
+    engines: {node: '>=18.17.0', npm: '>=9.6.7'}
 
   tinybench@2.9.0:
     resolution: {integrity: sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg==}
@@ -4175,6 +4182,8 @@ snapshots:
       real-require: 0.2.0
 
   through@2.3.8: {}
+
+  timezones-ical-library@1.10.0: {}
 
   tinybench@2.9.0: {}
 

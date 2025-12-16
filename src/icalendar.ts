@@ -11,6 +11,7 @@ import { match } from "ts-pattern";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import UTC from "dayjs/plugin/utc";
+import { tzlib_get_ical_block } from "timezones-ical-library";
 
 dayjs.extend(customParseFormat);
 dayjs.extend(UTC);
@@ -22,6 +23,7 @@ export function buildICalendar(searchParams: URLSearchParams): Result<string> {
   }
   const {start, end, allDay} = dates.result
   const id = self.crypto.randomUUID();
+  const timezone = searchParams.get("ctz");
   const event: ICalEventData = {
     id,
     start,
@@ -30,13 +32,19 @@ export function buildICalendar(searchParams: URLSearchParams): Result<string> {
     summary: safeGetSearchParam(searchParams,"text"),
     description: searchParams.get("details"),
     location: searchParams.get("location"),
-    timezone: searchParams.get("ctz"),
+    timezone,
     busystatus: getBusyStatus(searchParams),
     transparency: getTransparency(searchParams),
     attendees: getAttendees(searchParams),
     repeating: searchParams.get("recur")
   };
-  const cal = ical()
+  const cal = ical();
+  if (timezone) {
+    cal.timezone({
+      name: timezone,
+      generator: tz => tzlib_get_ical_block(tz)[0] || null
+    });
+  }
   cal.method(ICalCalendarMethod.REQUEST);
   cal.createEvent(event);
   return success(cal.toString());
@@ -78,7 +86,7 @@ export function getDates(searchParams: URLSearchParams): Result<{ start: dayjs.D
   return success({ start, end, allDay });
 }
 
-export function getBusyStatus(searchParams: URLSearchParams): ICalEventBusyStatus | null {
+function getBusyStatus(searchParams: URLSearchParams): ICalEventBusyStatus | null {
   return match(searchParams.get("crm"))
       .with("BUSY", () => ICalEventBusyStatus.BUSY)
       .with("AVAILABLE", () => ICalEventBusyStatus.FREE)
@@ -86,7 +94,7 @@ export function getBusyStatus(searchParams: URLSearchParams): ICalEventBusyStatu
       .otherwise(() => null)
 }
 
-export function getTransparency(searchParams: URLSearchParams): ICalEventTransparency | null {
+function getTransparency(searchParams: URLSearchParams): ICalEventTransparency | null {
   return match(searchParams.get("trp"))
       .with("BUSY", () => ICalEventTransparency.OPAQUE)
       .with("AVAILABLE", () => ICalEventTransparency.TRANSPARENT)
