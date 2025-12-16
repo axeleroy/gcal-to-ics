@@ -8,7 +8,7 @@ import ical, {
   ICalEventTransparency
 } from "ical-generator";
 import { match } from "ts-pattern";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import UTC from "dayjs/plugin/utc";
 import { tzlib_get_ical_block } from "timezones-ical-library";
@@ -76,9 +76,15 @@ export function getDates(searchParams: URLSearchParams): Result<{ start: dayjs.D
   } else {
     formatToUse = localTimeFormat;
   }
-
-  const start = dayjs(startStr, formatToUse);
-  const end = dayjs(endStr, formatToUse);
+  let start: Dayjs;
+  let end: Dayjs;
+  if (allDay) {
+    start = dayjs.utc(startStr, formatToUse);
+    end = dayjs.utc(endStr, formatToUse);
+  } else {
+    start = dayjs(startStr, formatToUse);
+    end = dayjs(endStr, formatToUse);
+  }
   if (!start.isValid() || !end.isValid()) {
     console.error(`One of the dates is invalid: ${dates}`)
     return failure();

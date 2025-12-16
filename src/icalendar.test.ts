@@ -7,6 +7,10 @@ import dayjs from "dayjs";
 describe("buildIcalendar", () => {
   beforeEach(() => {
     vi.useFakeTimers();
+    vi.setSystemTime(new Date("2025-12-15T00:00:00.000Z"));
+    vi.stubGlobal("crypto", {
+      randomUUID : vi.fn(() => "foo")
+    });
   })
 
   afterEach(() => {
@@ -17,10 +21,6 @@ describe("buildIcalendar", () => {
   it('should return a valid iCalendar event', () => {
     // GIVEN
     const searchParams = new URLSearchParams("?action=TEMPLATE&text=Birthday&dates=20201231T193000Z/20201231T223000Z&details=With%20clowns%20and%20stuff&location=North%20Pole");
-    vi.setSystemTime(new Date("2025-12-15T00:00:00.000Z"));
-    vi.stubGlobal("crypto", {
-      randomUUID : vi.fn(() => "foo")
-    });
 
     // WHEN
     const result = buildICalendar(searchParams);
@@ -47,10 +47,6 @@ END:VCALENDAR`)
   it('should return a valid iCalendar event with timezone and recurrence', () => {
     // GIVEN
     const searchParams = new URLSearchParams("?action=TEMPLATE&text=Example+Google+Calendar+Event&details=More+help+see:+https://support.google.com/calendar/thread/81344786&dates=20201231T160000/20201231T170000&recur=RRULE:FREQ%3DWEEKLY;UNTIL%3D20210603&ctz=America/Toronto");
-    vi.setSystemTime(new Date("2025-12-15T00:00:00.000Z"));
-    vi.stubGlobal("crypto", {
-      randomUUID : vi.fn(() => "foo")
-    });
 
     // WHEN
     const result = buildICalendar(searchParams);
@@ -96,6 +92,34 @@ DESCRIPTION:More help see: https://support.google.com/calendar/thread/8134\r
 END:VEVENT\r
 END:VCALENDAR`)
   });
+
+  it('should return a valid iCalendar event with all-day event', () => {
+    // GIVEN
+    const searchParams = new URLSearchParams("?action=TEMPLATE&text=Example%20event&dates=20251216/20251217&details=&location=");
+
+
+    // WHEN
+    const result = buildICalendar(searchParams);
+
+    // THEN
+    expect(result.ok).toBe(true);
+    expect(result.ok && result.result).toBe(`BEGIN:VCALENDAR\r
+VERSION:2.0\r
+PRODID:-//sebbo.net//ical-generator//EN\r
+METHOD:REQUEST\r
+BEGIN:VEVENT\r
+UID:foo\r
+SEQUENCE:0\r
+DTSTAMP:20251215T000000Z\r
+DTSTART;VALUE=DATE:20251216\r
+DTEND;VALUE=DATE:20251217\r
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE\r
+X-MICROSOFT-MSNCALENDAR-ALLDAYEVENT:TRUE\r
+SUMMARY:Example event\r
+DESCRIPTION:\r
+END:VEVENT\r
+END:VCALENDAR`)
+  });
 })
 
 describe('getDates', () => {
@@ -131,7 +155,7 @@ describe('getDates', () => {
   });
   it('should parse dates only', () => {
     // GIVEN
-    const searchParams = new URLSearchParams("dates=20201231Z/20201231Z");
+    const searchParams = new URLSearchParams("dates=20201230Z/20201231Z");
 
     // WHEN
     const res = getDates(searchParams);
@@ -139,8 +163,8 @@ describe('getDates', () => {
     // THEN
     expect(res.ok).toBe(true);
     expect(res.ok && res.result).toEqual({
-      start: dayjs("2020-12-31"),
-      end: dayjs("2020-12-31"),
+      start: dayjs.utc("2020-12-30"),
+      end: dayjs.utc("2020-12-31"),
       allDay: true
     })
   });
