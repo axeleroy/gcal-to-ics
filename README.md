@@ -21,7 +21,7 @@ use [mise](https://mise.jdx.dev/) to install them both by executing `mise instal
     ```shell
     pnpm install --frozen-lockfile
     ```
-2. Compile the Typescript files and bundle them
+2. Compile the TypeScript files and bundle them
     ```shell
     pnpm bundle
     ```
@@ -29,6 +29,12 @@ use [mise](https://mise.jdx.dev/) to install them both by executing `mise instal
     ```shell
    pnpm build
     ```
+   
+### Running in a browser with live-reload
+
+The `dev` script (executed with `pnpm dev`) watches for code changes and automatically re-compiles and reloads the 
+add-on. To specify a profile, a specific version of Firefox or to debug on Android, follow the 
+[documentation on `web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-run).
 
 ### Running tests
 
@@ -40,6 +46,18 @@ Run `mise test` (which will also install dependencies) or `pnpm test`.
 
 In order to intercept event creation URLs, the add-on must request access to Google Calendar's domain. Don't worry, it
 does not access any other URL nor any content in Google Calendar.
+
+### The add-on did not create an ICS file and simply showed me the Google Calendar interface
+
+This is either because the creation URL was invalid or that you stumbled on an edge-case that it does not handle (yet).
+In any case, [create an issue](https://github.com/axeleroy/gcal-to-ics/issues/new) with the URL that failed and don't
+forget to redact sensitive information from it.
+
+### The ICS the add-on created is invalid / not recognized by my calendar application
+
+Please [create an issue](https://github.com/axeleroy/gcal-to-ics/issues/new) with the original Google Calendar URL 
+(Right Click → Copy Link), the generated ICS file and the calendar application you use. You may want to edit the URL and
+ICS file to redact sensitive information beforehand.
 
 ### Importing each ICS file manually in service X is a chore, why doesn't the add-on do it for me?
 
