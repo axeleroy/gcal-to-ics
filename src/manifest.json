@@ -14,6 +14,10 @@
             "background.js"
         ]
     },
+    "icons": {
+        "32": "icon-32.png",
+        "64": "icon-64.png"
+    },
     "browser_specific_settings": {
         "gecko": {
             "data_collection_permissions": {
