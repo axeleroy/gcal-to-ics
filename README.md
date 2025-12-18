@@ -1,7 +1,7 @@
 # gCal to ICS
 
-An add-on that intercepts links to create new Google Calendar events and turns them into iCalendar (ICS) files to import
-in your favorite calendar application (Thunderbird, Outlook, Proton Calendar, etc.).
+An add-on that intercepts links that create new Google Calendar events and turns them into iCalendar (ICS) files you can
+import in your favorite calendar application (Thunderbird, Outlook, Proton Calendar, etc.)
 
 ## Download
 
@@ -58,6 +58,24 @@ forget to redact sensitive information from it.
 Please [create an issue](https://github.com/axeleroy/gcal-to-ics/issues/new) with the original Google Calendar URL 
 (Right Click → Copy Link), the generated ICS file and the calendar application you use. You may want to edit the URL and
 ICS file to redact sensitive information beforehand.
+
+
+### Why isn't it available on Chrome and other Chromium-based browsers? (Edge, Brave, Opera, etc.)
+
+Simply put, Google —in their fight against ad-blockers— introduced changes to how extensions can interact with requests:
+they removed the method that was previously available and replaced it with a new one that is much more rigid and 
+limited, to the point that it prevents implementing this add-on's feature.
+
+<details>
+    <summary>The more technical version</summary>
+    Google [deprecated Manifest V2](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
+    —the "original" API for extensions— in favor of [Manifest V3](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3).
+
+    One of the major changes Manifest V3 brought is the removal of the `webRequestBlocking` permission, that allowed
+    extensions (such as this one) to intercept and then block or rewrite HTTP requests. Its replacement, the 
+    [`declarativeNetRequest` API](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
+    only allows to create pre-defined rules, which means it's impossible to create ICS files on the fly.
+</details>
 
 ### Importing each ICS file manually in service X is a chore, why doesn't the add-on do it for me?
 
