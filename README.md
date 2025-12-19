@@ -49,6 +49,16 @@ Run `mise test` (which will also install dependencies) or `pnpm test`.
 In order to intercept event creation URLs, the add-on must request permission to Google Calendar's domain. Because it
 only requests permission to intercept requests, it cannot read Google's response nor the content of the page.
 
+### On Android, Google Calendar links directly open in the application
+
+You probably have set up Firefox to open links in applications. You can change that behavior in the settings, under
+"Advanced" → "Open links in apps". Select either "Ask before opening" or "Never".
+
+### On Android, Firefox asks me to open the link in Google Calendar
+
+That is because Firefox detects that the Google Calendar app can open links to `calendar.google.com` **before** the
+add-on can intercept the link. Simply click on "Cancel" and it will ask you to download the ICS file.
+
 ### The add-on did not create an ICS file and simply showed me the Google Calendar interface
 
 This is either because the creation URL was invalid or that you stumbled on an edge-case that it does not handle (yet).
