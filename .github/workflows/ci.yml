@@ -1,0 +1,29 @@
+name: Continuous Integration
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+    workflow_dispatch:
+
+permissions:
+    contents: write
+
+jobs:
+    ci:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+            - uses: jdx/mise-action@v3
+              with:
+                  install: true
+                  cache: true
+                  experimental: true
+            - name: Run lint
+              run: mise run lint
+            - name: Run tests
+              run: mise run test
+            - name: Run web-ext lin
+              run: mise run web-ext-lint
