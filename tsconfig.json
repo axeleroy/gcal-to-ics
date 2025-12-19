@@ -10,7 +10,7 @@
         "module": "preserve",
         "moduleResolution": "bundler",
         "target": "esnext",
-        "types": ["firefox-webext-browser"],
+        "types": ["firefox-webext-browser", "@types/node"],
         // For nodejs:
         // "lib": ["esnext"],
         // "types": ["node"],
