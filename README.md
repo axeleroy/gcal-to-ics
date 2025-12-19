@@ -1,5 +1,7 @@
 # gCal to ICS
 
+![Add-on's icon](https://github.com/axeleroy/gcal-to-ics/blob/main/src/icon-64.png?raw=true)
+
 An add-on that intercepts links that create new Google Calendar events and turns them into iCalendar (ICS) files you can
 import in your favorite calendar application (Thunderbird, Outlook, Proton Calendar, etc.)
 
@@ -44,8 +46,8 @@ Run `mise test` (which will also install dependencies) or `pnpm test`.
 
 ### Why does it ask permission for `calendar.google.com`?
 
-In order to intercept event creation URLs, the add-on must request access to Google Calendar's domain. Don't worry, it
-does not access any other URL nor any content in Google Calendar.
+In order to intercept event creation URLs, the add-on must request permission to Google Calendar's domain. Because it
+only requests permission to intercept requests, it cannot read Google's response nor the content of the page.
 
 ### The add-on did not create an ICS file and simply showed me the Google Calendar interface
 
@@ -68,13 +70,14 @@ limited, to the point that it prevents implementing this add-on's feature.
 
 <details>
     <summary>The more technical version</summary>
-    Google [deprecated Manifest V2](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
-    —the "original" API for extensions— in favor of [Manifest V3](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3).
 
-    One of the major changes Manifest V3 brought is the removal of the `webRequestBlocking` permission, that allowed
-    extensions (such as this one) to intercept and then block or rewrite HTTP requests. Its replacement, the 
-    [`declarativeNetRequest` API](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
-    only allows to create pre-defined rules, which means it's impossible to create ICS files on the fly.
+Google [deprecated Manifest V2](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
+—the "original" API for extensions— in favor of [Manifest V3](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3).
+
+One of the major changes Manifest V3 brought is the removal of the `webRequestBlocking` permission, that allowed
+extensions (such as this one) to intercept and then block or rewrite HTTP requests. Its replacement, the 
+[`declarativeNetRequest` API](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
+only allows to create pre-defined rules, which means it's impossible to create ICS files on the fly.
 </details>
 
 ### Importing each ICS file manually in service X is a chore, why doesn't the add-on do it for me?
