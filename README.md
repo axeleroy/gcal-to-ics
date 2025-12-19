@@ -1,6 +1,6 @@
-# gCal to ICS
-
 ![Add-on's icon](https://github.com/axeleroy/gcal-to-ics/blob/main/src/icon-64.png?raw=true)
+
+# Google Calendar links to ICS
 
 An add-on that intercepts links that create new Google Calendar events and turns them into iCalendar (ICS) files you can
 import in your favorite calendar application (Thunderbird, Outlook, Proton Calendar, etc.)
@@ -71,13 +71,13 @@ limited, to the point that it prevents implementing this add-on's feature.
 <details>
     <summary>The more technical version</summary>
 
-Google [deprecated Manifest V2](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
+> Google [deprecated Manifest V2](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
 —the "original" API for extensions— in favor of [Manifest V3](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3).
-
-One of the major changes Manifest V3 brought is the removal of the `webRequestBlocking` permission, that allowed
+>
+> One of the major changes Manifest V3 brought is the removal of the `webRequestBlocking` permission, that allowed
 extensions (such as this one) to intercept and then block or rewrite HTTP requests. Its replacement, the 
 [`declarativeNetRequest` API](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
-only allows to create pre-defined rules, which means it's impossible to create ICS files on the fly.
+only allows creating pre-defined rules, which means it's impossible to create ICS files on the fly.
 </details>
 
 ### Importing each ICS file manually in service X is a chore, why doesn't the add-on do it for me?
@@ -94,5 +94,5 @@ My advice then, is to use a calendar application (like Thunderbird or Outlook) a
 ### Why doesn't it work with Proton ICS Auto-Importer?
 
 Due to the limitations of add-ons, [Proton ICS Auto-Importer](https://addons.mozilla.org/firefox/addon/proton-ics-auto-importer/)
-can only work on direct links to ICS files, and because gCal to ICS does its work after the user has clicked on Google
-Calendar links, Proton ICS Auto-Importer cannot detect the generated ICS file.
+can only work on direct links to ICS files. Because Google Calendar links to ICS does its work after the user has
+clicked on a link, Proton ICS Auto-Importer cannot detect the generated ICS file.
