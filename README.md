@@ -93,6 +93,6 @@ My advice then, is to use a calendar application (like Thunderbird or Outlook) a
 
 ### Why doesn't it work with Proton ICS Auto-Importer?
 
-Due to the limitations of add-ons, [Proton ICS Auto-Importer](https://addons.mozilla.org/firefox/addon/proton-ics-auto-importer/)
-can only work on direct links to ICS files. Because Google Calendar links to ICS does its work after the user has
+As it is, [Proton ICS Auto-Importer](https://addons.mozilla.org/firefox/addon/proton-ics-auto-importer/)
+only works on direct links to ICS files. Because _Google Calendar links to ICS_ does its work after the user has
 clicked on a link, Proton ICS Auto-Importer cannot detect the generated ICS file.
