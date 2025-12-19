@@ -1,0 +1,19 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:recommended",
+        "security:minimumReleaseAgeNpm",
+        ":labels(dependencies)"
+    ],
+    "minimumReleaseAge": "7 days",
+    "packageRules": [
+        {
+            "matchUpdateTypes": ["minor", "patch"],
+            "matchCurrentVersion": "!/^0/",
+            "automerge": true
+        }
+    ],
+    "dependencyDashboard": true,
+    "rangeStrategy": "bump",
+    "labels": ["dependencies"]
+}
