@@ -7,7 +7,7 @@ import in your favorite calendar application (Thunderbird, Outlook, Proton Calen
 
 ## Download
 
-Links to come
+https://addons.mozilla.org/addon/google-calendar-links-to-ics/
 
 ## Working on the add-on
 
