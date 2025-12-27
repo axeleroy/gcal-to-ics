@@ -1,7 +1,11 @@
 import { extractSearchParams } from "./utils";
 import { buildICalendar } from "./icalendar";
 
-const urls = ["https://calendar.google.com/calendar/render*", "https://calendar.google.com/calendar/r/eventedit*"];
+const urls = [
+    "https://calendar.google.com/calendar/render*",
+    "https://calendar.google.com/calendar/r/eventedit*",
+    "https://calendar.google.com/calendar/event*",
+];
 
 function redirect(
     requestDetails: browser.webRequest._OnBeforeRequestDetails,
