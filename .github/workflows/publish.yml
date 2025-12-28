@@ -1,0 +1,52 @@
+name: Publish add-on
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish_amo:
+    name: Publish to AMO
+    runs-on: ubuntu-latest
+    timeout-minutes: 10080
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.update_ua.outputs.updated_ref }}
+      - name: Install dependencies
+        run: apt install jq -y
+      - name: Get version from manifest.json
+        id: get_version
+        run: |
+          echo "version_name=$(cat src/manifest.json | jq -r '.version')" >> "$GITHUB_OUTPUT"
+      - name: Get release notes
+        id: get_release_notes
+        run: |
+          echo "release_notes=$(cat metadata.json | jq -r '.version.release_notes.en-UK')" >> "$GITHUB_OUTPUT"
+      - name: Zip sources
+        run: zip -r sources.zip . -x "node_modules/*" -x ".github/*" -x ".husky/*" -x ".git/*"
+      - uses: jdx/mise-action@v3
+        with:
+          version: 2025.6.1
+          install: true
+          cache: true
+          experimental: true
+      - name: Build and publish extension
+        env:
+          WEB_EXT_CHANNEL: listed
+          WEB_EXT_AMO_METADATA: metadata.json
+          WEB_EXT_APPROVAL_TIMEOUT: 604800000
+          WEB_EXT_API_KEY: ${{ secrets.AMO_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.AMO_API_SECRET }}
+        run: mise run sign
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ steps.get_version.outputs.version_name }}
+          tag_name: ${{ steps.get_version.outputs.version_name }}
+          generate_release_notes: true
+          append_body: true
+          body: ${{ steps.get_release_notes.outputs.release_notes }}

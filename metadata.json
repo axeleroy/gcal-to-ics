@@ -1,0 +1,9 @@
+{
+    "summary": {
+        "en-UK": "An add-on that intercepts links that create new Google Calendar events and turns them into iCalendar (ICS) files you can import in your favorite calendar application (Thunderbird, Outlook, Proton Calendar, etc.)"
+    },
+    "categories": ["other"],
+    "version": {
+        "license": "MPL-2.0"
+    }
+}

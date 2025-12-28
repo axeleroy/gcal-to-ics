@@ -6,3 +6,4 @@ src/*.js
 *.log
 
 web-ext-artifacts
+*.zip
