@@ -37,6 +37,7 @@ jobs:
         env:
           WEB_EXT_CHANNEL: listed
           WEB_EXT_AMO_METADATA: metadata.json
+          WEB_EXT_UPLOAD_SOURCE_CODE: sources.zip
           WEB_EXT_APPROVAL_TIMEOUT: 604800000
           WEB_EXT_API_KEY: ${{ secrets.AMO_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.AMO_API_SECRET }}

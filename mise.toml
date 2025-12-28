@@ -33,3 +33,7 @@ depends = ['bundle']
 [tasks.web-ext-lint]
 run = 'pnpm web-ext-lint'
 depends = ['bundle']
+
+[tasks.sign]
+run = 'pnpm sign'
+depends = ['build']
