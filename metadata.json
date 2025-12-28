@@ -4,6 +4,9 @@
     },
     "categories": ["other"],
     "version": {
-        "license": "MPL-2.0"
+        "license": "MPL-2.0",
+        "release_notes": {
+            "en-UK": "The add-on now handles URLs starting with https://calendar.google.com/calendar/event"
+        }
     }
 }

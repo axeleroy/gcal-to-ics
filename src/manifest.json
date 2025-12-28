@@ -2,7 +2,7 @@
     "name": "Google Calendar links to ICS",
     "description": "Intercepts links that create new Google Calendar events and turns them into iCalendar files",
     "manifest_version": 2,
-    "version": "1.0",
+    "version": "1.1",
     "permissions": [
         "webRequest",
         "webRequestBlocking",
