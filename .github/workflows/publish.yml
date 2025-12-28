@@ -25,7 +25,7 @@ jobs:
       - name: Get release notes
         id: get_release_notes
         run: |
-          echo "release_notes=$(cat metadata.json | jq -r '.version.release_notes.en-UK')" >> "$GITHUB_OUTPUT"
+          echo "release_notes=$(cat metadata.json | jq -r '.version.release_notes.en-GB')" >> "$GITHUB_OUTPUT"
       - name: Zip sources
         run: zip -r sources.zip . -x "node_modules/*" -x ".github/*" -x ".husky/*" -x ".git/*"
       - uses: jdx/mise-action@v3
