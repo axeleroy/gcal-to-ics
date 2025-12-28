@@ -6,11 +6,11 @@
     "scripts": {
         "test": "vitest",
         "lint": "eslint",
-        "dev": "concurrently 'rollup -c --watch' 'cd src && web-ext run --devtools'",
+        "dev": "concurrently 'rollup -c --watch' 'web-ext run -s src/ --devtools'",
         "bundle": "rollup -c",
         "build": "web-ext build --overwrite-dest --ignore-files *.ts --ignore-files *.svg -s src/",
         "web-ext-lint": "web-ext lint -s src/",
-        "sign": "web-ext sign"
+        "sign": "web-ext sign -s src/"
     },
     "packageManager": "pnpm@10.26.2",
     "devDependencies": {
