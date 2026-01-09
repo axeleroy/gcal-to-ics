@@ -43,7 +43,7 @@
     "dependencies": {
         "dayjs": "^1.11.19",
         "ical-generator": "^10.0.0",
-        "timezones-ical-library": "^1.10.0",
+        "timezones-ical-library": "^1.11.1",
         "ts-pattern": "^5.9.0"
     }
 }
