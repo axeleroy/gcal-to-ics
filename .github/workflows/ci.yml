@@ -25,5 +25,5 @@ jobs:
               run: mise run lint
             - name: Run tests
               run: mise run test
-            - name: Run web-ext lin
+            - name: Run web-ext lint
               run: mise run web-ext-lint
