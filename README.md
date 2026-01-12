@@ -59,10 +59,10 @@ links in apps". Select either "Ask before opening" or "Never".
 "Applications" → "See all apps" → "Calendar" → "Open by default" and select "In your browser". (Exact path to this 
 screen or wording can change depending on your phone's version or vendor) 
 
-### On Android, Firefox asks me to open the link in Google Calendar
+### On Android, Firefox prompts me to open the link in Google Calendar
 
 That is because Firefox detects that the Google Calendar app can open links to `calendar.google.com` **before** the
-add-on can intercept the link. Simply click on "Cancel" and it will ask you to download the ICS file. For a more 
+add-on can intercept the link. Simply click on "Cancel" and it will prompt you to download the ICS file. For a more 
 permanent solution, see Solution 2 described above.
 
 ### The add-on did not create an ICS file and simply showed me the Google Calendar interface
