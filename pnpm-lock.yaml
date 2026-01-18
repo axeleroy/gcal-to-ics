@@ -40,7 +40,7 @@ importers:
         specifier: ^143.0.0
         version: 143.0.0
       '@types/node':
-        specifier: ^24.10.8
+        specifier: ^24.10.9
         version: 24.10.9
       concurrently:
         specifier: ^9.2.1
