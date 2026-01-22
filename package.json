@@ -33,7 +33,7 @@
         "prettier": "^3.8.0",
         "rollup": "^4.55.2",
         "typescript": "^5.9.3",
-        "typescript-eslint": "^8.53.0",
+        "typescript-eslint": "^8.53.1",
         "vitest": "^4.0.17",
         "web-ext": "^9.2.0"
     },
