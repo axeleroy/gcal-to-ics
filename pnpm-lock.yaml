@@ -15,7 +15,7 @@ importers:
         specifier: ^10.0.0
         version: 10.0.0(@types/node@24.10.9)(dayjs@1.11.19)
       timezones-ical-library:
-        specifier: ^2.0.0
+        specifier: ^2.0.1
         version: 2.0.1
       ts-pattern:
         specifier: ^5.9.0
