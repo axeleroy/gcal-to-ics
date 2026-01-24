@@ -73,7 +73,7 @@ importers:
         specifier: ^3.8.0
         version: 3.8.0
       rollup:
-        specifier: ^4.55.2
+        specifier: ^4.55.3
         version: 4.56.0
       typescript:
         specifier: ^5.9.3
