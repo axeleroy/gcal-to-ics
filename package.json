@@ -35,7 +35,7 @@
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.55.0",
         "vitest": "^4.0.18",
-        "web-ext": "^9.2.0"
+        "web-ext": "^9.3.0"
     },
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"
