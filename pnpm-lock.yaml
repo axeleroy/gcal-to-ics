@@ -15,8 +15,8 @@ importers:
         specifier: ^10.0.0
         version: 10.0.0(@types/node@24.10.13)(dayjs@1.11.19)
       timezones-ical-library:
-        specifier: ^2.1.0
-        version: 2.1.0
+        specifier: ^2.1.1
+        version: 2.1.2
       ts-pattern:
         specifier: ^5.9.0
         version: 5.9.0
@@ -2130,9 +2130,9 @@ packages:
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
 
-  timezones-ical-library@2.1.0:
-    resolution: {integrity: sha512-DVZD9tpb0RktNRj6ptY8oLidpF4V1NSeQ1p956yWOasauZdYD5lsX9DRsQ7OctwE83zBSLtbD78eenCUkf8B1w==}
-    engines: {node: '>=24.11.1', npm: '>=11.6.2'}
+  timezones-ical-library@2.1.2:
+    resolution: {integrity: sha512-VW7gTRzrveUNdLaztWKlsgHRn1eagubRA/HHembnrh9xYDtDRwRWN+zWcNIE3QM+TpXikSJLp/jwxYQv7IJJvg==}
+    engines: {node: '>=22.20.0', npm: '>=10.9.3'}
 
   tinybench@2.9.0:
     resolution: {integrity: sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg==}
@@ -4394,7 +4394,7 @@ snapshots:
   terser@5.44.1:
     dependencies:
       '@jridgewell/source-map': 0.3.11
-      acorn: 8.15.0
+      acorn: 8.16.0
       commander: 2.20.3
       source-map-support: 0.5.21
     optional: true
@@ -4405,7 +4405,7 @@ snapshots:
 
   through@2.3.8: {}
 
-  timezones-ical-library@2.1.0: {}
+  timezones-ical-library@2.1.2: {}
 
   tinybench@2.9.0: {}
 
