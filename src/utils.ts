@@ -10,13 +10,11 @@ export function safeGetSearchParam(searchParams: URLSearchParams, key: string): 
 }
 
 export function extractSearchParams(pageUrl: string): Result<URLSearchParams> {
-    try {
-        // I'd prefer to use URL.parse(), but it is still not supported in Firefox ESR2 (115)
-        const url = new URL(pageUrl);
-        const { searchParams } = url;
-        return success(searchParams);
-    } catch (e) {
-        console.error("Failed to extract search params", e);
+    const url = URL.parse(pageUrl);
+    if (!url) {
+        console.error("Failed to extract search params", pageUrl);
         return failure();
     }
+    const { searchParams } = url;
+    return success(searchParams);
 }
