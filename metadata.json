@@ -6,7 +6,7 @@
     "version": {
         "license": "MPL-2.0",
         "release_notes": {
-            "en-GB": "Drop support for Firefox versions lower than 126, including ESR 115 (which is no longer supported since Feb 28th 2026).\nThis version is functionally identical to 1.2, which still supports old Firefox versions, if required."
+            "en-GB": "Drop support for Firefox versions lower than 126, including ESR 115 (which is no longer supported since Feb 28th 2026). This version is functionally identical to 1.2, which still supports old Firefox versions, if required."
         }
     }
 }
