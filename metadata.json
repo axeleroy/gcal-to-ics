@@ -8,5 +8,13 @@
         "release_notes": {
             "en-GB": "Timezone data has been updated and the extension is slightly smaller."
         }
+    },
+    "compatibility": {
+        "android": {
+            "min": "126"
+        },
+        "firefox": {
+            "min": "126"
+        }
     }
 }
