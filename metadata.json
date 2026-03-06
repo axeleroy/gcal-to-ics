@@ -6,7 +6,7 @@
     "version": {
         "license": "MPL-2.0",
         "release_notes": {
-            "en-GB": "The add-on now handles URLs starting with https://calendar.google.com/calendar/event"
+            "en-GB": "Timezone data has been updated and the extension is slightly smaller."
         }
     }
 }
