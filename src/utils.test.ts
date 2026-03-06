@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { extractSearchParams, safeGetSearchParam } from "./utils";
 
 describe("extractSearchParams", () => {
