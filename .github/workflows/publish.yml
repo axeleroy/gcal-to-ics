@@ -48,3 +48,5 @@ jobs:
           generate_release_notes: true
           append_body: true
           body: ${{ steps.get_release_notes.outputs.release_notes }}
+          files: |
+              web-ext-artifacts/*.xpi
