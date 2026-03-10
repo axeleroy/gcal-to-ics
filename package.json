@@ -14,7 +14,7 @@
     },
     "packageManager": "pnpm@10.30.3",
     "devDependencies": {
-        "@eslint/compat": "^2.0.2",
+        "@eslint/compat": "^2.0.3",
         "@eslint/js": "^10.0.1",
         "@rollup/plugin-commonjs": "^29.0.2",
         "@rollup/plugin-node-resolve": "^16.0.3",
