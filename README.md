@@ -44,7 +44,7 @@ Run `mise test` (which will also install dependencies) or `pnpm test`.
 
 ## FAQ
 
-### Why does it ask permission for `calendar.google.com`?
+### Why does it ask permission for `calendar.google.com` and `www.google.com`?
 
 In order to intercept event creation URLs, the add-on must request permission to Google Calendar's domain. Because it
 only requests permission to intercept requests, it cannot read Google's response nor the content of the page.
