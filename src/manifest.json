@@ -8,7 +8,8 @@
         "webRequestBlocking",
         "https://calendar.google.com/calendar/render*",
         "https://calendar.google.com/calendar/r/eventedit*",
-        "https://calendar.google.com/calendar/event*"
+        "https://calendar.google.com/calendar/event*",
+        "https://www.google.com/calendar/gp*"
     ],
     "background": {
         "scripts": ["background.js"]
