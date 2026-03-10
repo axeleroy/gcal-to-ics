@@ -9,12 +9,30 @@ export function safeGetSearchParam(searchParams: URLSearchParams, key: string): 
     }
 }
 
-export function extractSearchParams(pageUrl: string): Result<URLSearchParams> {
+function parseUrl(pageUrl: string): Result<URL> {
     const url = URL.parse(pageUrl);
     if (!url) {
-        console.error("Failed to extract search params", pageUrl);
+        console.error("Failed to parse URL", pageUrl);
         return failure();
     }
-    const { searchParams } = url;
+    return success(url);
+}
+
+export function extractSearchParams(pageUrl: string): Result<URLSearchParams> {
+    const url = parseUrl(pageUrl);
+    if (!url.ok) {
+        return failure();
+    }
+    const { searchParams } = url.result;
     return success(searchParams);
+}
+
+export function extractSearchParamsFromUrlFragment(pageUrl: string): Result<URLSearchParams> {
+    const url = parseUrl(pageUrl);
+    if (!url.ok) {
+        return failure();
+    }
+    const { hash } = url.result;
+    const cleaned = hash.replace("#", "");
+    return success(new URLSearchParams(cleaned));
 }

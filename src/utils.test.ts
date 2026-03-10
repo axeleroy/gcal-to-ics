@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { extractSearchParams, safeGetSearchParam } from "./utils";
+import { extractSearchParams, extractSearchParamsFromUrlFragment, safeGetSearchParam } from "./utils";
 
 describe("extractSearchParams", () => {
     it("should return search params when URL contains them", () => {
@@ -37,6 +37,48 @@ describe("extractSearchParams", () => {
 
         // WHEN
         const result = extractSearchParams(url);
+
+        // THEN
+        expect(result.ok).toBe(false);
+    });
+});
+
+describe("extractSearchParamsFromUrlFragment", () => {
+    it("should return search params when URL contains them", () => {
+        // GIVEN
+        const url = "https://example.com/url#foo=bar&baz=buzz";
+
+        // WHEN
+        const result = extractSearchParamsFromUrlFragment(url);
+
+        // THEN
+        expect(result.ok).toBe(true);
+        expect(result.ok && result.result).toEqual(
+            new URLSearchParams({
+                foo: "bar",
+                baz: "buzz",
+            }),
+        );
+    });
+
+    it("should return empty URLSearchParams if the URL does not contain any params", () => {
+        // GIVEN
+        const url = "https://example.com/url";
+
+        // WHEN
+        const result = extractSearchParamsFromUrlFragment(url);
+
+        // THEN
+        expect(result.ok).toBe(true);
+        expect(result.ok && result.result).toEqual(new URLSearchParams());
+    });
+
+    it("should return a failure if the URL is invalid", () => {
+        // GIVEN
+        const url = "/foo";
+
+        // WHEN
+        const result = extractSearchParamsFromUrlFragment(url);
 
         // THEN
         expect(result.ok).toBe(false);
