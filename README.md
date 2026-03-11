@@ -5,6 +5,10 @@
 An add-on that intercepts links that create new Google Calendar events and turns them into iCalendar (ICS) files you can
 import in your favorite calendar application (Thunderbird, Outlook, Proton Calendar, etc.)
 
+> [!NOTE]
+> This add-on does not work with shared/published [calendars](https://support.google.com/calendar/answer/37082) and
+> [events](https://support.google.com/calendar/answer/41207?ref_topic=10510447#:~:text=Get%20a%20public%20link%20for%20an%20event)
+
 ## Download
 
 https://addons.mozilla.org/addon/google-calendar-links-to-ics/
@@ -14,7 +18,7 @@ https://addons.mozilla.org/addon/google-calendar-links-to-ics/
 You need [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io) to be installed beforehand. Alternatively, you can
 use [mise](https://mise.jdx.dev/) to install them both by executing `mise install`.
 
-### Building 
+### Building
 
 > [!TIP]
 > If you have `mise` installed, executing `mise run build` will run every task described bellow.
@@ -31,12 +35,13 @@ use [mise](https://mise.jdx.dev/) to install them both by executing `mise instal
     ```shell
    pnpm build
     ```
-   
+
 ### Running in a browser with live-reload
 
-The `dev` script (executed with `pnpm dev`) watches for code changes and automatically re-compiles and reloads the 
-add-on. To specify a profile, a specific version of Firefox or to debug on Android, follow the 
-[documentation on `web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-run).
+The `dev` script (executed with `pnpm dev`) watches for code changes and automatically re-compiles and reloads the
+add-on. To specify a profile, a specific version of Firefox or to debug on Android, follow the
+[documentation on
+`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-run).
 
 ### Running tests
 
@@ -54,15 +59,15 @@ only requests permission to intercept requests, it cannot read Google's response
 You probably have set up Firefox to open links in applications. There are two solutions:
 
 1. **Change Firefox's link handling for all applications** on your phone. Go to its settings, under "Advanced" → "Open
-links in apps". Select either "Ask before opening" or "Never".
+   links in apps". Select either "Ask before opening" or "Never".
 2. **Prevent the Google Calendar application from opening its own links**. Go to your phone's settings, in
-"Applications" → "See all apps" → "Calendar" → "Open by default" and select "In your browser". (Exact path to this 
-screen or wording can change depending on your phone's version or vendor) 
+   "Applications" → "See all apps" → "Calendar" → "Open by default" and select "In your browser". (Exact path to this
+   screen or wording can change depending on your phone's version or vendor)
 
 ### On Android, Firefox prompts me to open the link in Google Calendar
 
 That is because Firefox detects that the Google Calendar app can open links to `calendar.google.com` **before** the
-add-on can intercept the link. Simply click on "Cancel" and it will prompt you to download the ICS file. For a more 
+add-on can intercept the link. Simply click on "Cancel" and it will prompt you to download the ICS file. For a more
 permanent solution, see Solution 2 described above.
 
 ### The add-on did not create an ICS file and simply showed me the Google Calendar interface
@@ -73,32 +78,33 @@ forget to redact sensitive information from it.
 
 ### The ICS the add-on created is invalid / not recognized by my calendar application
 
-Please [create an issue](https://github.com/axeleroy/gcal-to-ics/issues/new) with the original Google Calendar URL 
+Please [create an issue](https://github.com/axeleroy/gcal-to-ics/issues/new) with the original Google Calendar URL
 (Right Click → Copy Link), the generated ICS file and the calendar application you use. You may want to edit the URL and
 ICS file to redact sensitive information beforehand.
-
 
 ### Why isn't it available on Chrome and other Chromium-based browsers? (Edge, Brave, Opera, etc.)
 
 Simply put, Google —in their fight against ad-blockers— introduced changes to how extensions can interact with requests:
-they removed the method that was previously available and replaced it with a new one that is much more rigid and 
+they removed the method that was previously available and replaced it with a new one that is much more rigid and
 limited, to the point that it prevents implementing this add-on's feature.
 
 <details>
     <summary>The more technical version</summary>
 
 > Google [deprecated Manifest V2](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
-—the "original" API for extensions— in favor of [Manifest V3](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3).
+> —the "original" API for extensions— in favor
+> of [Manifest V3](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3).
 >
 > One of the major changes Manifest V3 brought is the removal of the `webRequestBlocking` permission, that allowed
-extensions (such as this one) to intercept and then block or rewrite HTTP requests. Its replacement, the 
+> extensions (such as this one) to intercept and then block or rewrite HTTP requests. Its replacement, the
 [`declarativeNetRequest` API](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
-only allows creating pre-defined rules, which means it's impossible to create ICS files on the fly.
+> only allows creating pre-defined rules, which means it's impossible to create ICS files on the fly.
 </details>
 
 ### Importing each ICS file manually in service X is a chore, why doesn't the add-on do it for me?
 
-To be honest, I originally intended for this add-on to automatically import the generated ICS files into Proton Calendar,
+To be honest, I originally intended for this add-on to automatically import the generated ICS files into Proton
+Calendar,
 but quickly elected not to, for the following reasons:
 
 - It would make the extension significantly more complex.
