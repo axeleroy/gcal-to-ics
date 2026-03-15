@@ -8,9 +8,9 @@
         "lint": "eslint",
         "dev": "concurrently 'rollup -c --watch' 'web-ext run -s src/ --devtools'",
         "bundle": "rollup -c",
-        "build": "web-ext build --overwrite-dest --ignore-files *.ts --ignore-files *.svg -s src/",
+        "build": "web-ext build --overwrite-dest --ignore-files *.ts *.svg -s src/",
         "web-ext-lint": "web-ext lint -s src/",
-        "sign": "web-ext sign -s src/"
+        "sign": "web-ext sign --ignore-files *.ts *.svg -s src/"
     },
     "packageManager": "pnpm@10.32.1",
     "devDependencies": {
