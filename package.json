@@ -34,7 +34,7 @@
         "rollup": "^4.59.0",
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.57.0",
-        "vitest": "^4.0.18",
+        "vitest": "^4.1.0",
         "web-ext": "^9.4.0"
     },
     "lint-staged": {
