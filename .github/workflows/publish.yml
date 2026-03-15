@@ -47,6 +47,7 @@ jobs:
           tag_name: ${{ steps.get_version.outputs.version_name }}
           generate_release_notes: true
           append_body: true
-          body: ${{ steps.get_release_notes.outputs.release_notes }}
+          body: |
+            ${{ steps.get_release_notes.outputs.release_notes }}
           files: |
               web-ext-artifacts/*.xpi
