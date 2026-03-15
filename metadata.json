@@ -6,7 +6,7 @@
     "version": {
         "license": "MPL-2.0",
         "release_notes": {
-            "en-GB": "Add support for URLs starting with www.google.com/calendar/gp, hence the new permission asked by the add-on."
+            "en-GB": "Removed a couple of dependencies, leading to a decrease in the add-on's size (about 7KB)"
         }
     }
 }
