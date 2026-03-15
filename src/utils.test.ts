@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { extractSearchParams, extractSearchParamsFromUrlFragment, safeGetSearchParam } from "./utils";
+import { extractSearchParams, extractSearchParamsFromUrlFragment, safeGetSearchParam } from "./urls-utils";
 
 describe("extractSearchParams", () => {
     it("should return search params when URL contains them", () => {

@@ -1,4 +1,4 @@
-import { extractSearchParams, extractSearchParamsFromUrlFragment } from "./utils";
+import { extractSearchParams, extractSearchParamsFromUrlFragment } from "./urls-utils";
 import { buildICalendar } from "./icalendar";
 import { Result } from "./types";
 

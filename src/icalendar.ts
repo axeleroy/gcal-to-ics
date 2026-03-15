@@ -1,5 +1,5 @@
 import { failure, Result, success } from "./types";
-import { safeGetSearchParam } from "./utils";
+import { safeGetSearchParam } from "./urls-utils";
 import ical, {
     ICalAttendeeData,
     ICalCalendarMethod,
@@ -8,13 +8,8 @@ import ical, {
     ICalEventTransparency,
 } from "ical-generator";
 import { match } from "ts-pattern";
-import dayjs, { Dayjs } from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
-import UTC from "dayjs/plugin/utc";
 import { tzlib_get_ical_block } from "timezones-ical-library";
-
-dayjs.extend(customParseFormat);
-dayjs.extend(UTC);
+import { getDates } from "./dates-utils";
 
 export function buildICalendar(searchParams: URLSearchParams): Result<string> {
     const dates = getDates(searchParams);
@@ -48,50 +43,6 @@ export function buildICalendar(searchParams: URLSearchParams): Result<string> {
     cal.method(ICalCalendarMethod.REQUEST);
     cal.createEvent(event);
     return success(cal.toString());
-}
-
-const allDayFormat = "YYYYMMDD";
-const localTimeFormat = `${allDayFormat}THHmmss`;
-const utcTimeFormat = `${localTimeFormat}Z`;
-
-export function getDates(
-    searchParams: URLSearchParams,
-): Result<{ start: dayjs.Dayjs; end: dayjs.Dayjs; allDay: boolean }> {
-    if (!searchParams.has("dates")) {
-        console.error('Search params do not contain "dates" entry', searchParams);
-        return failure();
-    }
-
-    const dates = searchParams.get("dates")!;
-    const [startStr, endStr] = dates.split("/");
-    if (!startStr || !endStr) {
-        console.error(`One of the dates are missing from dates search param: ${dates}`);
-        return failure();
-    }
-    const allDay = !dates.includes("T");
-    const isUtc = dates.includes("Z");
-    let formatToUse: string;
-    if (allDay) {
-        formatToUse = allDayFormat;
-    } else if (isUtc) {
-        formatToUse = utcTimeFormat;
-    } else {
-        formatToUse = localTimeFormat;
-    }
-    let start: Dayjs;
-    let end: Dayjs;
-    if (allDay) {
-        start = dayjs.utc(startStr, formatToUse);
-        end = dayjs.utc(endStr, formatToUse);
-    } else {
-        start = dayjs(startStr, formatToUse);
-        end = dayjs(endStr, formatToUse);
-    }
-    if (!start.isValid() || !end.isValid()) {
-        console.error(`One of the dates is invalid: ${dates}`);
-        return failure();
-    }
-    return success({ start, end, allDay });
 }
 
 function getBusyStatus(searchParams: URLSearchParams): ICalEventBusyStatus | null {
