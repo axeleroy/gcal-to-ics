@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      dayjs:
-        specifier: ^1.11.20
-        version: 1.11.20
       ical-generator:
         specifier: ^10.0.0
         version: 10.0.0(@types/node@24.12.0)(dayjs@1.11.20)
@@ -3287,7 +3284,8 @@ snapshots:
     transitivePeerDependencies:
       - '@noble/hashes'
 
-  dayjs@1.11.20: {}
+  dayjs@1.11.20:
+    optional: true
 
   debounce@1.2.1: {}
 
