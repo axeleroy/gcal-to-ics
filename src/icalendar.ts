@@ -7,7 +7,6 @@ import ical, {
     ICalEventData,
     ICalEventTransparency,
 } from "ical-generator";
-import { match } from "ts-pattern";
 import { tzlib_get_ical_block } from "timezones-ical-library";
 import { getDates } from "./dates-utils";
 
@@ -46,18 +45,27 @@ export function buildICalendar(searchParams: URLSearchParams): Result<string> {
 }
 
 function getBusyStatus(searchParams: URLSearchParams): ICalEventBusyStatus | null {
-    return match(searchParams.get("crm"))
-        .with("BUSY", () => ICalEventBusyStatus.BUSY)
-        .with("AVAILABLE", () => ICalEventBusyStatus.FREE)
-        .with("BLOCKING", () => ICalEventBusyStatus.OOF)
-        .otherwise(() => null);
+    switch (searchParams.get("crm")) {
+        case "BUSY":
+            return ICalEventBusyStatus.BUSY;
+        case "AVAILABLE":
+            return ICalEventBusyStatus.FREE;
+        case "BLOCKING":
+            return ICalEventBusyStatus.OOF;
+        default:
+            return null;
+    }
 }
 
 function getTransparency(searchParams: URLSearchParams): ICalEventTransparency | null {
-    return match(searchParams.get("trp"))
-        .with("BUSY", () => ICalEventTransparency.OPAQUE)
-        .with("AVAILABLE", () => ICalEventTransparency.TRANSPARENT)
-        .otherwise(() => null);
+    switch (searchParams.get("trp")) {
+        case "BUSY":
+            return ICalEventTransparency.OPAQUE;
+        case "AVAILABLE":
+            return ICalEventTransparency.TRANSPARENT;
+        default:
+            return null;
+    }
 }
 
 export function getAttendees(searchParams: URLSearchParams): ICalAttendeeData[] {
