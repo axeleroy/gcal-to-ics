@@ -41,7 +41,7 @@ jobs:
           WEB_EXT_API_SECRET: ${{ secrets.AMO_API_SECRET }}
         run: mise run sign
       - name: Create release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           name: ${{ steps.get_version.outputs.version_name }}
           tag_name: ${{ steps.get_version.outputs.version_name }}
