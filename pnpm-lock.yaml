@@ -12,8 +12,8 @@ importers:
         specifier: ^10.2.0
         version: 10.2.0(@types/node@24.12.2)(dayjs@1.11.20)
       timezones-ical-library:
-        specifier: ^2.1.3
-        version: 2.1.3
+        specifier: ^2.2.0
+        version: 2.2.0
     devDependencies:
       '@eslint/compat':
         specifier: ^2.0.5
@@ -2099,8 +2099,8 @@ packages:
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
 
-  timezones-ical-library@2.1.3:
-    resolution: {integrity: sha512-3ihogrr88TefPpa2og2fHw22VsWxlPUN4YDiLZRV9pbRsmguMyDsHhm8i0kkj7ihQYFgERZkj6eVOYY+TSOaOw==}
+  timezones-ical-library@2.2.0:
+    resolution: {integrity: sha512-D8pKEBzYnCAGZSEyinMZqh2yTc7ZJqonXtNkpTzhPuJlkJjPEUJOXBs7ExeHcHGBaGpaJRTye5t0mLR20BeklA==}
     engines: {node: '>=22.18.0', npm: '>=10.9.3'}
 
   tinybench@2.9.0:
@@ -4348,7 +4348,7 @@ snapshots:
 
   through@2.3.8: {}
 
-  timezones-ical-library@2.1.3: {}
+  timezones-ical-library@2.2.0: {}
 
   tinybench@2.9.0: {}
 
