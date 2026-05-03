@@ -42,6 +42,6 @@
     },
     "dependencies": {
         "ical-generator": "^10.2.0",
-        "timezones-ical-library": "^2.1.3"
+        "timezones-ical-library": "^2.2.0"
     }
 }
