@@ -6,7 +6,7 @@
     "version": {
         "license": "MPL-2.0",
         "release_notes": {
-            "en-GB": "Updated dependency ical-generator, which had a bug for events created before year 1000. This release also removes source files that were unintentionally bundled into the add-on, shaving at least a dozen of kilobytes."
+            "en-GB": "Updated timezones data (through dependency timezones-ical-library)."
         }
     }
 }
