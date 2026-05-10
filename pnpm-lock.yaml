@@ -54,9 +54,6 @@ importers:
       husky:
         specifier: 9.1.7
         version: 9.1.7
-      jiti:
-        specifier: 2.7.0
-        version: 2.7.0
       jsdom:
         specifier: 29.1.1
         version: 29.1.1
@@ -3763,7 +3760,8 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  jiti@2.7.0: {}
+  jiti@2.7.0:
+    optional: true
 
   jose@5.9.6: {}
 
