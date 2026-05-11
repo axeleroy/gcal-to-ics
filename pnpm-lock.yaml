@@ -55,7 +55,7 @@ importers:
         specifier: 9.1.7
         version: 9.1.7
       jiti:
-        specifier: ^2.7.0
+        specifier: 2.7.0
         version: 2.7.0
       jsdom:
         specifier: 29.1.1
