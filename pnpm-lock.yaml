@@ -10,7 +10,7 @@ importers:
     dependencies:
       ical-generator:
         specifier: ^10.2.0
-        version: 10.2.0(@types/node@24.12.2)(dayjs@1.11.20)
+        version: 10.2.0(@types/node@24.12.2)
       timezones-ical-library:
         specifier: ^2.2.0
         version: 2.2.0
@@ -54,6 +54,9 @@ importers:
       husky:
         specifier: 9.1.7
         version: 9.1.7
+      jiti:
+        specifier: ^2.7.0
+        version: 2.7.0
       jsdom:
         specifier: 29.1.1
         version: 29.1.1
@@ -74,7 +77,7 @@ importers:
         version: 8.59.2(eslint@10.3.0(jiti@2.7.0))(typescript@6.0.3)
       vitest:
         specifier: 4.1.5
-        version: 4.1.5(@types/node@24.12.2)(jsdom@29.1.1)(vite@7.2.7(@types/node@24.12.2)(jiti@2.7.0)(terser@5.44.1)(yaml@2.8.4))
+        version: 4.1.5(@types/node@24.12.2)(jsdom@29.1.1)(vite@7.2.7(@types/node@24.12.2)(jiti@2.7.0)(yaml@2.8.4))
       web-ext:
         specifier: 10.1.0
         version: 10.1.0(jiti@2.7.0)
@@ -426,21 +429,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@jridgewell/gen-mapping@0.3.13':
-    resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
-
-  '@jridgewell/resolve-uri@3.1.2':
-    resolution: {integrity: sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==}
-    engines: {node: '>=6.0.0'}
-
-  '@jridgewell/source-map@0.3.11':
-    resolution: {integrity: sha512-ZMp1V8ZFcPG5dIWnQLr3NSI1MiCU7UETdS/A0G8V/XWHvJv3ZsFqutJn1Y5RPmAPX6F3BiE397OqveU/9NCuIA==}
-
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
-
-  '@jridgewell/trace-mapping@0.3.31':
-    resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
   '@mdn/browser-compat-data@7.3.9':
     resolution: {integrity: sha512-ARxwDFfq4uhRSd9Wr1FMaxeKKIFDPyMnSoLe/8WX+nNXbKDILf1H8KDJW9nzu2QTR0hQ37jDCzAgyaNYdLzACQ==}
@@ -954,9 +944,6 @@ packages:
     resolution: {integrity: sha512-lomjuFZKfM6MSAnV9aCZC9sc0qGbmZdfygNv+nCpqVkSKdCxCklLtd16O0EILGkImHw9ZpHkAnHaB+8Zxq5W6Q==}
     engines: {node: '>=8.0.0'}
 
-  commander@2.20.3:
-    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
-
   commander@2.9.0:
     resolution: {integrity: sha512-bmkUukX8wAOjHdN26xj5c4ctEV22TQ7dQYhSmuckKhToXrkUn0iIaolHdIxYYqD55nhpSPA9zPQ1yP57GdXP2A==}
     engines: {node: '>= 0.6.x'}
@@ -1015,9 +1002,6 @@ packages:
   data-urls@7.0.0:
     resolution: {integrity: sha512-23XHcCF+coGYevirZceTVD7NdJOqVn+49IHyxgszm+JIiHLoB2TkmPtsYkNWT1pvRSGkc35L6NHs0yHkN2SumA==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
-
-  dayjs@1.11.20:
-    resolution: {integrity: sha512-YbwwqR/uYpeoP4pu043q+LTDLFBLApUP6VxRihdfNTqu4ubqMlGDLd6ErXhEgsyvY0K6nCs7nggYumAN+9uEuQ==}
 
   debounce@1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
@@ -2089,11 +2073,6 @@ packages:
     resolution: {integrity: sha512-Bh7QjT8/SuKUIfObSXNHNSK6WHo6J1tHCqJsuaFDP7gP0fkzSfTxI8y85JrppZ0h8l0maIgc2tfuZQ6/t3GtnQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
-  terser@5.44.1:
-    resolution: {integrity: sha512-t/R3R/n0MSwnnazuPpPNVO60LX0SKL45pyl9YlvxIdkH0Of7D5qM2EVe+yASRIlY5pZ73nclYJfNANGWPwFDZw==}
-    engines: {node: '>=10'}
-    hasBin: true
-
   thread-stream@4.0.0:
     resolution: {integrity: sha512-4iMVL6HAINXWf1ZKZjIPcz5wYaOdPhtO8ATvZ+Xqp3BTdaqtAwQkNmKORqcIo5YkQqGXq5cwfswDwMqqQNrpJA==}
     engines: {node: '>=20'}
@@ -2676,28 +2655,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@jridgewell/gen-mapping@0.3.13':
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.5
-      '@jridgewell/trace-mapping': 0.3.31
-    optional: true
-
-  '@jridgewell/resolve-uri@3.1.2':
-    optional: true
-
-  '@jridgewell/source-map@0.3.11':
-    dependencies:
-      '@jridgewell/gen-mapping': 0.3.13
-      '@jridgewell/trace-mapping': 0.3.31
-    optional: true
-
   '@jridgewell/sourcemap-codec@1.5.5': {}
-
-  '@jridgewell/trace-mapping@0.3.31':
-    dependencies:
-      '@jridgewell/resolve-uri': 3.1.2
-      '@jridgewell/sourcemap-codec': 1.5.5
-    optional: true
 
   '@mdn/browser-compat-data@7.3.9': {}
 
@@ -2956,13 +2914,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.5(vite@7.2.7(@types/node@24.12.2)(jiti@2.7.0)(terser@5.44.1)(yaml@2.8.4))':
+  '@vitest/mocker@4.1.5(vite@7.2.7(@types/node@24.12.2)(jiti@2.7.0)(yaml@2.8.4))':
     dependencies:
       '@vitest/spy': 4.1.5
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.2.7(@types/node@24.12.2)(jiti@2.7.0)(terser@5.44.1)(yaml@2.8.4)
+      vite: 7.2.7(@types/node@24.12.2)(jiti@2.7.0)(yaml@2.8.4)
 
   '@vitest/pretty-format@4.1.5':
     dependencies:
@@ -3208,9 +3166,6 @@ snapshots:
       strip-ansi: 6.0.1
       wcwidth: 1.0.1
 
-  commander@2.20.3:
-    optional: true
-
   commander@2.9.0:
     dependencies:
       graceful-readlink: 1.0.1
@@ -3282,9 +3237,6 @@ snapshots:
       whatwg-url: 16.0.1
     transitivePeerDependencies:
       - '@noble/hashes'
-
-  dayjs@1.11.20:
-    optional: true
 
   debounce@1.2.1: {}
 
@@ -3568,6 +3520,10 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.3
 
+  fdir@6.5.0(picomatch@4.0.4):
+    optionalDependencies:
+      picomatch: 4.0.4
+
   file-entry-cache@8.0.0:
     dependencies:
       flat-cache: 4.0.1
@@ -3670,10 +3626,9 @@ snapshots:
 
   husky@9.1.7: {}
 
-  ical-generator@10.2.0(@types/node@24.12.2)(dayjs@1.11.20):
+  ical-generator@10.2.0(@types/node@24.12.2):
     optionalDependencies:
       '@types/node': 24.12.2
-      dayjs: 1.11.20
 
   iconv-lite@0.6.3:
     dependencies:
@@ -3771,8 +3726,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  jiti@2.7.0:
-    optional: true
+  jiti@2.7.0: {}
 
   jose@5.9.6: {}
 
@@ -4345,14 +4299,6 @@ snapshots:
     dependencies:
       '@pkgr/core': 0.2.9
 
-  terser@5.44.1:
-    dependencies:
-      '@jridgewell/source-map': 0.3.11
-      acorn: 8.16.0
-      commander: 2.20.3
-      source-map-support: 0.5.21
-    optional: true
-
   thread-stream@4.0.0:
     dependencies:
       real-require: 0.2.0
@@ -4448,11 +4394,11 @@ snapshots:
 
   uuid@8.3.2: {}
 
-  vite@7.2.7(@types/node@24.12.2)(jiti@2.7.0)(terser@5.44.1)(yaml@2.8.4):
+  vite@7.2.7(@types/node@24.12.2)(jiti@2.7.0)(yaml@2.8.4):
     dependencies:
       esbuild: 0.25.12
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
       postcss: 8.5.6
       rollup: 4.60.3
       tinyglobby: 0.2.15
@@ -4460,13 +4406,12 @@ snapshots:
       '@types/node': 24.12.2
       fsevents: 2.3.3
       jiti: 2.7.0
-      terser: 5.44.1
       yaml: 2.8.4
 
-  vitest@4.1.5(@types/node@24.12.2)(jsdom@29.1.1)(vite@7.2.7(@types/node@24.12.2)(jiti@2.7.0)(terser@5.44.1)(yaml@2.8.4)):
+  vitest@4.1.5(@types/node@24.12.2)(jsdom@29.1.1)(vite@7.2.7(@types/node@24.12.2)(jiti@2.7.0)(yaml@2.8.4)):
     dependencies:
       '@vitest/expect': 4.1.5
-      '@vitest/mocker': 4.1.5(vite@7.2.7(@types/node@24.12.2)(jiti@2.7.0)(terser@5.44.1)(yaml@2.8.4))
+      '@vitest/mocker': 4.1.5(vite@7.2.7(@types/node@24.12.2)(jiti@2.7.0)(yaml@2.8.4))
       '@vitest/pretty-format': 4.1.5
       '@vitest/runner': 4.1.5
       '@vitest/snapshot': 4.1.5
@@ -4483,7 +4428,7 @@ snapshots:
       tinyexec: 1.0.4
       tinyglobby: 0.2.15
       tinyrainbow: 3.1.0
-      vite: 7.2.7(@types/node@24.12.2)(jiti@2.7.0)(terser@5.44.1)(yaml@2.8.4)
+      vite: 7.2.7(@types/node@24.12.2)(jiti@2.7.0)(yaml@2.8.4)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.12.2
