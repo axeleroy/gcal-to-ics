@@ -1,11 +1,10 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": [
-        "config:best-practices",
-        ":automergeStableNonMajor",
-        ":labels(dependencies)"
-    ],
+    "extends": ["config:best-practices", ":automergeStableNonMajor", ":labels(dependencies)"],
     "minimumReleaseAge": "7 days",
     "dependencyDashboard": true,
-    "rangeStrategy": "bump"
+    "rangeStrategy": "bump",
+    "lockFileMaintenance": {
+        "automerge": true
+    }
 }
