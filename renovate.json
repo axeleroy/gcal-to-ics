@@ -5,6 +5,7 @@
     "dependencyDashboard": true,
     "rangeStrategy": "bump",
     "lockFileMaintenance": {
-        "automerge": true
+        "automerge": true,
+        "minimumReleaseAgeBehaviour": "timestamp-optional"
     }
 }
