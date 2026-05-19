@@ -1,11 +1,21 @@
 import { failure, Result, success } from "./types";
 
+/**
+ * Returns the search param value or an empty string if it does not exist.
+ */
 export function safeGetSearchParam(searchParams: URLSearchParams, key: string): string {
+    return getSearchParam(searchParams, key) || "";
+}
+
+/**
+ * Returns the search param value or null if it does not exist.
+ */
+export function getSearchParam(searchParams: URLSearchParams, key: string): string | null {
     if (searchParams.has(key)) {
         return searchParams.get(key)!;
     } else {
         console.warn(`Search params do not contain "${key}" entry`, searchParams);
-        return "";
+        return null;
     }
 }
 

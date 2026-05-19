@@ -1,5 +1,5 @@
 import { failure, Result, success } from "./types";
-import { safeGetSearchParam } from "./urls-utils";
+import { getSearchParam, safeGetSearchParam } from "./urls-utils";
 import ical, {
     ICalAttendeeData,
     ICalCalendarMethod,
@@ -17,20 +17,20 @@ export function buildICalendar(searchParams: URLSearchParams): Result<string> {
     }
     const { start, end, allDay } = dates.result;
     const id = self.crypto.randomUUID();
-    const timezone = searchParams.get("ctz");
+    const timezone = getSearchParam(searchParams, "ctz");
     const event: ICalEventData = {
         id,
         start,
         end,
         allDay,
         summary: safeGetSearchParam(searchParams, "text"),
-        description: searchParams.get("details"),
-        location: searchParams.get("location"),
+        description: getSearchParam(searchParams, "details"),
+        location: getSearchParam(searchParams, "location"),
         timezone,
         busystatus: getBusyStatus(searchParams),
         transparency: getTransparency(searchParams),
         attendees: getAttendees(searchParams),
-        repeating: searchParams.get("recur"),
+        repeating: getSearchParam(searchParams, "recur"),
     };
     const cal = ical();
     if (timezone) {
@@ -45,7 +45,7 @@ export function buildICalendar(searchParams: URLSearchParams): Result<string> {
 }
 
 function getBusyStatus(searchParams: URLSearchParams): ICalEventBusyStatus | null {
-    switch (searchParams.get("crm")) {
+    switch (getSearchParam(searchParams, "crm")) {
         case "BUSY":
             return ICalEventBusyStatus.BUSY;
         case "AVAILABLE":
@@ -58,7 +58,7 @@ function getBusyStatus(searchParams: URLSearchParams): ICalEventBusyStatus | nul
 }
 
 function getTransparency(searchParams: URLSearchParams): ICalEventTransparency | null {
-    switch (searchParams.get("trp")) {
+    switch (getSearchParam(searchParams, "trp")) {
         case "BUSY":
             return ICalEventTransparency.OPAQUE;
         case "AVAILABLE":
@@ -72,6 +72,6 @@ export function getAttendees(searchParams: URLSearchParams): ICalAttendeeData[] 
     if (!searchParams.has("add")) {
         return [];
     }
-    const attendees = searchParams.get("add")!;
+    const attendees = getSearchParam(searchParams, "add")!;
     return attendees.split(",").map((email) => ({ email }));
 }

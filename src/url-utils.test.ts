@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { extractSearchParams, extractSearchParamsFromUrlFragment, safeGetSearchParam } from "./urls-utils";
+import {
+    extractSearchParams,
+    extractSearchParamsFromUrlFragment,
+    getSearchParam,
+    safeGetSearchParam,
+} from "./urls-utils";
 
 describe("extractSearchParams", () => {
     it("should return search params when URL contains them", () => {
@@ -111,5 +116,34 @@ describe("safeGetSearchParam", () => {
 
         // THEN
         expect(result).toEqual("");
+    });
+});
+
+describe("getSearchParam", () => {
+    it("should return the value if key exists", () => {
+        // GIVEN
+        const params = new URLSearchParams({
+            foo: "bar",
+            baz: "buzz",
+        });
+
+        // WHEN
+        const result = getSearchParam(params, "foo");
+
+        // THEN
+        expect(result).toEqual("bar");
+    });
+    it("should return null if key does not exist", () => {
+        // GIVEN
+        const params = new URLSearchParams({
+            foo: "bar",
+            baz: "buzz",
+        });
+
+        // WHEN
+        const result = getSearchParam(params, "bar");
+
+        // THEN
+        expect(result).toEqual(null);
     });
 });
