@@ -6,7 +6,7 @@
     "version": {
         "license": "MPL-2.0",
         "release_notes": {
-            "en-GB": "Updated timezones data (through dependency timezones-ical-library)."
+            "en-GB": "Fixed a bug that would produce invalid ICS files when certain characters (such as '#') were in certain fields."
         }
     }
 }
