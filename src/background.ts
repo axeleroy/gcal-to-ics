@@ -22,7 +22,7 @@ function createBlockingResponse(
         return;
     }
     return {
-        redirectUrl: `data:text/calendar,${encodeURI(iCalendarResponse.result)}`,
+        redirectUrl: `data:text/calendar,${encodeURIComponent(iCalendarResponse.result)}`,
     };
 }
 
