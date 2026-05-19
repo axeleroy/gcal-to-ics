@@ -21,6 +21,8 @@ jobs:
                   install: true
                   cache: true
                   experimental: true
+            - name: Run checks
+              run: mise run check
             - name: Run lint
               run: mise run lint
             - name: Run tests

@@ -6,6 +6,7 @@
     "scripts": {
         "test": "vitest",
         "lint": "eslint",
+        "check": "tsc --noEmit",
         "dev": "concurrently 'rollup -c --watch' 'web-ext run --devtools'",
         "bundle": "rollup -c",
         "build": "web-ext build",

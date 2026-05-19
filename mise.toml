@@ -14,6 +14,10 @@ run = 'pnpm install --frozen-lockfile'
 sources = ['package.json', 'pnpm-lock.yaml', 'mise.toml']
 outputs = ['node_modules/.pnpm/lock.yaml']
 
+[tasks.check]
+run = 'pnpm check'
+depends = ['pnpm-install']
+
 [tasks.lint]
 run = 'pnpm lint'
 depends = ['pnpm-install']
