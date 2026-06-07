@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       ical-generator:
-        specifier: ^10.2.0
-        version: 10.2.0(@types/node@24.13.0)
+        specifier: ^11.0.0
+        version: 11.0.0(@types/node@24.13.0)
       timezones-ical-library:
         specifier: ^2.2.0
         version: 2.2.0
@@ -1340,9 +1340,9 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  ical-generator@10.2.0:
-    resolution: {integrity: sha512-XR5FsiDWCsz5MwBwMA/sQqR3A9H240xkXIeXOabV7uNAiieP+TA9rleVvlwPLRXMz+CXME8cGuDd7cdnE5At6w==}
-    engines: {node: 20 || 22 || >=24}
+  ical-generator@11.0.0:
+    resolution: {integrity: sha512-OScZbXduIbjqtJzq0WLyPpAuKnc106+l28wszD+Wi2O9jXn76NVBfr4Ksv2XFyQn4JNZ9vWr5xAac0uT/FhVag==}
+    engines: {node: 22 || >=24.0.0}
     peerDependencies:
       '@touch4it/ical-timezones': '>=1.6.0'
       '@types/luxon': '>= 1.26.0'
@@ -3666,7 +3666,7 @@ snapshots:
 
   husky@9.1.7: {}
 
-  ical-generator@10.2.0(@types/node@24.13.0):
+  ical-generator@11.0.0(@types/node@24.13.0):
     optionalDependencies:
       '@types/node': 24.13.0
 
