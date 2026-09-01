@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       ical-generator:
-        specifier: ^11.0.0
+        specifier: ^11.1.0
         version: 11.1.0(@types/node@24.13.3)
       timezones-ical-library:
         specifier: ^2.3.1
