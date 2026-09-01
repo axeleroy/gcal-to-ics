@@ -6,6 +6,21 @@ on:
 permissions:
   contents: write
 
+# TODO:
+# - modify "build and publish" into only build
+# - save build output and files required for signing
+#   - sources.zip
+#   - metadata.json
+#   - build result
+#   - package.json
+#   - pnpm-lockfile.yaml
+#   - web-ext-config.mjs
+# - add outputs to the first job
+# - create a second job that requires the first one. in that one:
+# - restore what has been saved
+# - run `pnpm install --frozen-lockfile --filter "web-ext"`
+# - run web-ext sign
+
 jobs:
   publish_amo:
     name: Publish to AMO
