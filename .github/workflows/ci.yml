@@ -21,6 +21,7 @@ jobs:
                   install: true
                   cache: true
                   experimental: true
+                  minimum_release_age: 7d
             - name: Run checks
               run: mise run check
             - name: Run lint
