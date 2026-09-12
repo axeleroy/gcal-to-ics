@@ -30,7 +30,7 @@
         "husky": "9.1.7",
         "jiti": "2.7.0",
         "jsdom": "30.0.1",
-        "lint-staged": "17.4.1",
+        "lint-staged": "17.5.0",
         "prettier": "3.9.6",
         "rollup": "4.63.1",
         "typescript": "6.0.3",
