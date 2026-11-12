@@ -13,7 +13,7 @@
         "web-ext-lint": "web-ext lint",
         "sign": "web-ext sign"
     },
-    "packageManager": "pnpm@12.17.0",
+    "packageManager": "pnpm@12.18.0",
     "devDependencies": {
         "@eslint/compat": "2.1.1",
         "@eslint/js": "10.0.1",
